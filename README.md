@@ -6,7 +6,7 @@ This is an example configuration [`php-fpm`](http://www.php.net/manual/en/instal
 which is the preferred way of serving PHP with FastCGI. The old
 `php-cgi` is deprecated. You can even use a
 [patch](http://php-fpm.org) for PHP versions prior to 5.3.3, when fpm
-got merged to main PHP tree.
+become an official PHP project.
 
 
 ## Generalities
@@ -81,7 +81,7 @@ adjust it to your setup and conditions if usage.
      cp -a pool.d /etc/php5/fpm
      
  3. (Re)start `php5-fpm` with `service php5-fpm restart` or `service
-    php-fpm start` if starting `php-fpm` anew.   
+    php5-fpm start` if starting `php-fpm` anew.   
 
 ## Caveats
 
