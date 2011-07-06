@@ -33,7 +33,7 @@ thing.
 
 The formula is: 
   
-  number\_of\_children = (total_memory - 512 MB) / 128 MB
+    number\_of\_children = (total_memory - 512 MB) / 128 MB
     
 it's implied that each child consumes up to **128 MB**.
 
@@ -80,7 +80,7 @@ adjust it to your setup and conditions if usage.
      
      cp -a pool.d /etc/php5/fpm
      
- 3. (Re)start `php-fpm` with `service php-fpm restart` or `service
+ 3. (Re)start `php5-fpm` with `service php5-fpm restart` or `service
     php-fpm start` if starting `php-fpm` anew.   
 
 ## Caveats
