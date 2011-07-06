@@ -33,7 +33,7 @@ thing.
 
 The formula is: 
   
-    number\_of\_children = (total_memory - 512 MB) / 128 MB
+    number_of_children = (total_memory - 512 MB) / 128 MB
     
 it's implied that each child consumes up to **128 MB**.
 
