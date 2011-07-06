@@ -23,7 +23,7 @@ lacks a lot of nice features like **graceful restarts**. Currently
 adding a new pool or reloading the config requires a **full
 restart**. Which causes some downtime. Work is in progress to provide
 graceful restarts like
-[Nginx](http://wiki.nginx.org/NginxCommandLine).
+[Nginx](http://wiki.nginx.org/NginxCommandLine) has.
 
 It has the capacity to adjust the number of workers **dynamically** to
 the load, varying from a minimum to a specified maximum.
