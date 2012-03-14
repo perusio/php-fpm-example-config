@@ -28,24 +28,39 @@ graceful restarts/reloads like
 It has the capacity to adjust the number of workers **dynamically** to
 the load, varying from a minimum to a specified maximum.
 
-I've seen a formula being passed around that supposedly is the *right*
-thing.
 
-The formula is: 
-  
-    number_of_children = (total_memory - 512 MB) / 128 MB
+## Load adequation 
+
+There's no algorithm for determining the number of children. It
+depends on your application.
+
+A
+[thread](http://groups.google.com/group/highload-php-en/browse_thread/thread/754dbedc5eb841a2)
+in the
+[highload-php-en](http://groups.google.com/group/highload-php-en)
+gives some tips on how to determine the number of children.
+
+ 1. If your load is **CPU bound** then the rule is that the number of
+    children should be **equal** to number of **CPUs** plus 20 %.
     
-it's implied that each child consumes up to **128 MB**.
-
-Using this formula we get numbers significantly below the defaults
-that come with the distribution packages like the one provided by
-Debian and that is included here for completeness and providing a term
-of comparison. It's named `php5-fpm.conf.dpkg-dist`.
-
-This is the configuration I use for local development you should
-adjust it to your setup and conditions if usage. 
-
-
+    Example: Machine with 8 CPUs. Number of children = 10.
+    
+ 2. If your load is I/O bound then apply the following rule:
+ 
+        number_of_children = 1.2 * total_memory / average_space_per_process 
+  
+    Example: PHP processes occupying 256 MB of average space in a
+    machine with 2GB of RAM that can be used for running this PHP
+    application.
+  
+        number_of_children = 1.2 * 2048 / 256 
+  
+    giving: `10` children. 
+    
+    Determine the medium space occupied by a PHP process and apply the
+    above formula. The 1.2 factor is just a security factor, to use a
+    much abused engineering term.
+    
 ## Features 
 
  1. It uses a `UNIX` socket for connections from the web server to the
@@ -64,8 +79,10 @@ adjust it to your setup and conditions if usage.
     `php-fpm`. See
     [here](https://github.com/perusio/drupal-with-nginx) how to enable
     it for [Nginx](http://wiki.nginx.org).
-    
 
+ 5. Possbilitie of using **three** pools simultaneously to provide
+    load balancing on the FCGI upstream.
+    
 ## Installation
 
  1. Clone the git repo:
