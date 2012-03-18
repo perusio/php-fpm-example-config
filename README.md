@@ -83,8 +83,9 @@ gives some tips on how to determine the number of children.
     
 ## Features 
 
- 1. It uses a `UNIX` socket for connections from the web server to the
-    FastCGI daemon.
+ 1. It uses `UNIX` sockets for connections from the web server to the
+    FastCGI daemon as the *default*. It provides a branch `tcp` that
+    rely on TCP sockets. Choose which suits you better.
     
  2. The `php.ini` is modified from the stock one that comes with the
     Debian package. The modifications were made by using a tiny script
@@ -92,17 +93,15 @@ gives some tips on how to determine the number of children.
     [here](https://github.com/perusio/php-ini-cleanup) on
     github.
  
- 3. There's a single pool on this config that is run under the
-    `www-data` user.
+ 3. There are **three** pools on this config that run under the
+    `www-data` user. The idea is that the server should load balance
+    and distribute the load as you wish over it.
     
  4. Support for the **status** and **ping** functionalities of
     `php-fpm`. See
     [here](https://github.com/perusio/drupal-with-nginx) how to enable
     it for [Nginx](http://wiki.nginx.org).
 
- 5. Possbilitie of using **three** pools simultaneously to provide
-    load balancing on the FCGI upstream.
-    
 ## Installation
 
  1. Clone the git repo:
