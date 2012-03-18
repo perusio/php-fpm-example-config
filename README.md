@@ -28,7 +28,27 @@ graceful restarts/reloads like
 It has the capacity to adjust the number of workers **dynamically** to
 the load, varying from a minimum to a specified maximum.
 
+## Configuration layout
 
+The configuration comes in two flavors:
+
+ 1. [unix](https://github.com/perusio/php-fpm-example-config) which is
+    the **default**. It uses **UNIX domain sockets** for communication
+    between the FCGI responder provided by php-fpm and the server or
+    request frontend.
+  
+ 2. [tcp](https://github.com/perusio/php-fpm-example-config/tree/tcp).
+    It uses **TCP sockets** for communication between the FCGI
+    responder provided by php-fpm and the server or request frontend.
+
+ Choose the one that is more appropriate for your setup. Up until PHP
+ 5.3.8 TCP sockets, although, theoretically slower, if your setup is
+ on the loopback, behave better than UNXI sockets for high-traffic
+ sites.
+ 
+ This might have changed in 5.3.10 and 5.4.x. Try it and report back
+ please.
+ 
 ## Load adequation 
 
 There's no algorithm for determining the number of children. It
@@ -87,8 +107,16 @@ gives some tips on how to determine the number of children.
 
  1. Clone the git repo:
     `git://github.com/perusio/php-fpm-example-config`.
-    
- 2. Alter the `php-fpm.conf` and the `pool.d/www.conf` file to your
+
+ 2. Checkout the `tcp` branch if that's suits you better:
+ 
+         git checkout -b tcp 
+         
+    If on the contrary the `unix` sockets approach is more suited to
+    your site(s) then you can ignore this step and proceed to 3
+    directly.
+
+ 3. Alter the `php-fpm.conf` and the `pool.d/www.conf` file to your
     liking. Add any pool that you might want.
     
  4. Copy the files to the destination directory:
@@ -97,7 +125,7 @@ gives some tips on how to determine the number of children.
      
      cp -a pool.d /etc/php5/fpm
      
- 3. (Re)start `php5-fpm` with `service php5-fpm restart` or `service
+ 5. (Re)start `php5-fpm` with `service php5-fpm restart` or `service
     php5-fpm start` if starting `php-fpm` anew.   
 
 ## Caveats
