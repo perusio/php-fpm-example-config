@@ -28,7 +28,27 @@ graceful restarts/reloads like
 It has the capacity to adjust the number of workers **dynamically** to
 the load, varying from a minimum to a specified maximum.
 
+## Configuration layout
 
+The configuration comes in two flavors:
+
+ 1. [unix](https://github.com/perusio/php-fpm-example-config) which is
+    the **default**. It uses **UNIX domain sockets** for communication
+    between the FCGI responder provided by php-fpm and the server or
+    request frontend.
+  
+ 2. [tcp](https://github.com/perusio/php-fpm-example-config/tree/tcp).
+    It uses **TCP sockets** for communication between the FCGI
+    responder provided by php-fpm and the server or request frontend.
+
+ Choose the one that is more appropriate for your setup. Up until PHP
+ 5.3.8 TCP sockets, although, theoretically slower, if your setup is
+ on the loopback, behave better than UNXI sockets for high-traffic
+ sites.
+ 
+ This might have changed in 5.3.10 and 5.4.x. Try it and report back
+ please.
+ 
 ## Load adequation 
 
 There's no algorithm for determining the number of children. It
