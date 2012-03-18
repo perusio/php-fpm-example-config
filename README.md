@@ -83,8 +83,8 @@ gives some tips on how to determine the number of children.
     
 ## Features 
 
- 1. It uses a `UNIX` socket for connections from the web server to the
-    FastCGI daemon.
+ 1. It either uses `UNIX` sockets for connections from the web server to the
+    FastCGI daemon (default branch) or `TCP` sockets. You choose.  
     
  2. The `php.ini` is modified from the stock one that comes with the
     Debian package. The modifications were made by using a tiny script
@@ -92,7 +92,7 @@ gives some tips on how to determine the number of children.
     [here](https://github.com/perusio/php-ini-cleanup) on
     github.
  
- 3. There's a single pool on this config that is run under the
+ 3. There are **three** pools on this config that is run under the
     `www-data` user.
     
  4. Support for the **status** and **ping** functionalities of
@@ -100,7 +100,7 @@ gives some tips on how to determine the number of children.
     [here](https://github.com/perusio/drupal-with-nginx) how to enable
     it for [Nginx](http://wiki.nginx.org).
 
- 5. Possbilitie of using **three** pools simultaneously to provide
+ 5. Possbility of using **three** pools simultaneously to provide
     load balancing on the FCGI upstream.
     
 ## Installation
