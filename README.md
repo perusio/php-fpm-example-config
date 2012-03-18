@@ -85,7 +85,7 @@ gives some tips on how to determine the number of children.
 
  1. It uses `UNIX` sockets for connections from the web server to the
     FastCGI daemon as the *default*. It provides a branch `tcp` that
-    rely on TCP sockets. Choose which suits you better.
+    relies on TCP sockets. Choose which suits you better.
     
  2. The `php.ini` is modified from the stock one that comes with the
     Debian package. The modifications were made by using a tiny script
