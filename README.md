@@ -107,8 +107,16 @@ gives some tips on how to determine the number of children.
 
  1. Clone the git repo:
     `git://github.com/perusio/php-fpm-example-config`.
-    
- 2. Alter the `php-fpm.conf` and the `pool.d/www.conf` file to your
+
+ 2. Checkout the `tcp` branch if that's suits you better:
+ 
+         git checkout -b tcp 
+         
+    If on the contrary the `unix` sockets approach is more suited to
+    your site(s) then you can ignore this step and proceed to 3
+    directly.
+
+ 3. Alter the `php-fpm.conf` and the `pool.d/www.conf` file to your
     liking. Add any pool that you might want.
     
  4. Copy the files to the destination directory:
@@ -117,7 +125,7 @@ gives some tips on how to determine the number of children.
      
      cp -a pool.d /etc/php5/fpm
      
- 3. (Re)start `php5-fpm` with `service php5-fpm restart` or `service
+ 5. (Re)start `php5-fpm` with `service php5-fpm restart` or `service
     php5-fpm start` if starting `php-fpm` anew.   
 
 ## Caveats
