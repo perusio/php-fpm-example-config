@@ -43,7 +43,7 @@ The configuration comes in two flavors:
 
  Choose the one that is more appropriate for your setup. Up until PHP
  5.3.8 TCP sockets, although, theoretically slower, if your setup is
- on the loopback, behave better than UNXI sockets for high-traffic
+ on the loopback, behave better than UNIX sockets for high-traffic
  sites.
  
  This might have changed in 5.3.10 and 5.4.x. Try it and report back
